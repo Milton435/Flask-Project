@@ -3,7 +3,7 @@ import json, os
 
 # Flask App
 template_dir = os.path.abspath("./Templates")
-app = Flask(name, template_folder = template_dir)
+app = Flask(__name__, template_folder = template_dir)
 
 # Events DB
 EVENTS_DB = "./db/auto.json"
