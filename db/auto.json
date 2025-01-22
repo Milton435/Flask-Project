@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "modello": "Bugatti Chiron",
+        "targa": "AB123CD",
+        "cilindrata": 7993,
+        "chilometraggio": 25000,
+        "anno_produzione": 2020
+    },
+    {
+        "id": 2,
+        "modello": "Bentley Continental GT",
+        "targa": "EF456GH",
+        "cilindrata": 5950,
+        "chilometraggio": 18000,
+        "anno_produzione": 2019
+    },
+    {
+        "id": 3,
+        "modello": "McLaren 720S",
+        "targa": "IJ789KL",
+        "cilindrata": 3994,
+        "chilometraggio": 12000,
+        "anno_produzione": 2021
+    },
+    {
+        "id": 4,
+        "modello": "Mercedes-AMG GT",
+        "targa": "MN012OP",
+        "cilindrata": 3982,
+        "chilometraggio": 30000,
+        "anno_produzione": 2018
+    },
+    {
+        "id": 5,
+        "modello": "Ferrari SF90 Stradale",
+        "targa": "QR345ST",
+        "cilindrata": 3990,
+        "chilometraggio": 15000,
+        "anno_produzione": 2022
+    }
+]
