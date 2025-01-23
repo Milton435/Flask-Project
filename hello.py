@@ -58,6 +58,11 @@ def bugatti():
     events = load_events()
     return render_template("bugatti.html", events=events)
 
+@app.route("/pagani")
+def bugatti(): 
+    events = load_events()
+    return render_template("pagani.html", events=events)
+
 @app.route("/add_car", methods=["POST"])
 def add_car():
     events = load_events()
