@@ -1,42 +1,42 @@
 [
     {
-        "id": 1,
-        "modello": "Bugatti Chiron",
-        "targa": "AB123CD",
-        "cilindrata": 7993,
-        "chilometraggio": 25000,
-        "anno_produzione": 2020
+        "carid": 1,
+        "model": "Bugatti Chiron",
+        "numberPlate": "AB123CD",
+        "displacement": 7993,
+        "mileage": 25000,
+        "YOProduction": 2020
     },
     {
-        "id": 2,
-        "modello": "Lamborghini Aventador GT",
-        "targa": "EF456GH",
-        "cilindrata": 5950,
-        "chilometraggio": 18000,
-        "anno_produzione": 2019
+        "carid": 2,
+        "model": "Lamborghini Aventador GT",
+        "numberPlate": "EF456GH",
+        "displacement": 5950,
+        "mileage": 18000,
+        "YOProduction": 2019
     },
     {
-        "id": 3,
-        "modello": "McLaren 720S",
-        "targa": "IJ789KL",
-        "cilindrata": 3994,
-        "chilometraggio": 12000,
-        "anno_produzione": 2021
+        "carid": 3,
+        "model": "McLaren 720S",
+        "numberPlate": "IJ789KL",
+        "displacement": 3994,
+        "mileage": 12000,
+        "YOProduction": 2021
     },
     {
-        "id": 4,
-        "modello": "Mercedes-AMG GT",
-        "targa": "MN012OP",
-        "cilindrata": 3982,
-        "chilometraggio": 30000,
-        "anno_produzione": 2018
+        "carid": 4,
+        "model": "Mercedes-AMG GT",
+        "numberPlate": "MN012OP",
+        "displacement": 3982,
+        "mileage": 30000,
+        "YOProduction": 2018
     },
     {
-        "id": 5,
-        "modello": "Ferrari SF90 Stradale",
-        "targa": "QR345ST",
-        "cilindrata": 3990,
-        "chilometraggio": 15000,
-        "anno_produzione": 2022
+        "carid": 5,
+        "model": "Ferrari SF90 Stradale",
+        "numberPlate": "QR345ST",
+        "displacement": 3990,
+        "mileage": 15000,
+        "YOProduction": 2022
     }
 ]
