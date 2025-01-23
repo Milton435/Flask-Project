@@ -45,7 +45,7 @@
 </head>
 <body>
     <h1>Register a Car</h1>
-    <form id="carForm" action="/add">
+    <form id="carForm" action="/add" method="post">
         <label for="carId">Car ID:</label>
         <input type="text" id="carId" name="carId" required>
 
@@ -64,7 +64,7 @@
         <label for="YOProduction">Year of Production:</label>
         <input type="number" id="YOProduction" name="YOProduction" required>
 
-        <button type="button" onclick="registerCar()">Register Car</button>
+        <button type="submit">Register Car</button>
     </form>
 </body>
 </html>

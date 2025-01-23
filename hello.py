@@ -9,8 +9,8 @@ app = Flask(__name__, template_folder = template_dir)
 CAR_DB = "./db/auto.json"
 
 # Events Class
-class Event:
-    def init(self, car_id, model, numberPlate, displacement, mileage, YOProduction):
+class Car:
+    def _init_(self, car_id, model, numberPlate, displacement, mileage, YOProduction):
         self.id = car_id
         self.model = model
         self.numberPlate = numberPlate
@@ -40,30 +40,30 @@ class Event:
 @app.route("/", methods=["GET"])
 def index():
     with open(CAR_DB, "r") as file:
-        events = json.load(file)
+        cars = json.load(file)
     
-    return render_template("homepage.html", events = events)
+    return render_template("homepage.html", cars = cars)
 
 
 @app.route("/add", methods=["GET", "POST"])
 def add_event():
     if request.method == 'POST':
         with open(CAR_DB, "r") as file:
-            events = json.load(file)
+            cars = json.load(file)
             
-        new_event = Event(
-            car_id = len(events) + 1,
-            model = request.form["model"],
-            numberPlate = request.form["numberPlate"],
-            displacement= request.form["displacement"],
-            mileage = request.form["mileage"],
-            YOProduction = request.form["YOProduction"]
-        )
+        new_car = {
+            "id": request.form["carId"],
+            "model": request.form["model"],
+            "numberPlate": request.form["numberPlate"],
+            "displacement": request.form["displacement"],
+            "mileage": request.form["mileage"],
+            "YOProduction": request.form["YOProduction"],
+        }
         
-        events.append(new_event._dict_)
+        cars.append(new_car)
         
         with open(CAR_DB, 'w') as file:
-            json.dump(events, file, indent=4)
+            json.dump(cars, file, indent=4)
         
         return redirect('/')
         
