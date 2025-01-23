@@ -35,7 +35,6 @@ class Event:
 
 
 def load_events():
-    """Load events from the JSON file."""
     if not os.path.exists(EVENTS_DB):
         return []
     with open(EVENTS_DB, "r") as file:
@@ -43,7 +42,6 @@ def load_events():
 
 
 def save_events(events):
-    """Save events to the JSON file."""
     with open(EVENTS_DB, "w") as file:
         json.dump(events, file, indent=4)
 
@@ -59,9 +57,10 @@ def bugatti():
     return render_template("bugatti.html", events=events)
 
 @app.route("/pagani")
-def bugatti(): 
+def pagani(): 
     events = load_events()
     return render_template("pagani.html", events=events)
+
 
 @app.route("/add_car", methods=["POST"])
 def add_car():

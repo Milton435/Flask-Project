@@ -23,7 +23,7 @@
         "numberPlate": "IJ789KL",
         "displacement": 8000,
         "mileage": 12000,
-        "YOProduction": 2021,
+        "YOProduction": 2020,
         "price": "5,000,000 EUR"
     },
     {
@@ -50,8 +50,7 @@
         "numberPlate": "QR345ST",
         "displacement": 8000,
         "mileage": 15000,
-        "YOProduction": 2022,
+        "YOProduction": 2014,
         "price": "2,250,000 EUR"
     }
 ]
-
