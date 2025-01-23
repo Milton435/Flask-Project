@@ -141,7 +141,8 @@
         }
         button {
             padding: 10px 15px;
-            font-size: 10px;
+            margin-bottom: 15px;
+            font-size: 1rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -170,10 +171,10 @@
 
         #addButton {
             display: inline-block;
-            margin: 10px 60px;
+            margin: 1px 60px;
             background-color: #28A745;
             color: white;
-            font-size: 10px;
+            font-size: 1rem;
             padding: 15px 15px;
         }
         #addButton:hover {
@@ -261,17 +262,18 @@
             <a href="#">
                 <div class="slideshow-container">
                     <div class="mySlides">
-                        <img src="../static/img/bugatti/{{car.model | replace(' ', '_')}}.jpg" alt="{{ car.model }}">
+                        <img src="../static/img/bugatti/{{car.carid}}.jpg" alt="{{ car.model }}">
                     </div>
                 </div>
                 <div class="testo">
-                    <h4 style="text-align: center;">{{ car.model }}</h4>
+                    <h4 style="text-align: center; font-size: larger;">{{ car.model }}</h4>
+                    <p><strong>Price:</strong> {{ car.price }}</p>
                     <p><strong>Number Plate:</strong> {{ car.numberPlate }}</p>
                     <p><strong>Displacement:</strong> {{ car.displacement }} cc</p>
                     <p><strong>Mileage:</strong> {{ car.mileage }} km</p>
                     <p><strong>Year of Production:</strong> {{ car.YOProduction }}</p>
                 </div>
-                <div>
+                <div style="text-align: center;">
                     <button class="editButton" data-id="{{ car.carid }}" data-price="{{ car.price }}">Edit Price</button>
                     <button class="deleteButton" data-id="{{ car.carid }}">Delete</button>
                 </div>

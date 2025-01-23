@@ -1,43 +1,57 @@
 [
     {
         "carid": 1,
-        "model": "Bugatti_1",
-        "numberPlate": "AB123CD",
-        "displacement": 7993,
-        "mileage": 25000,
-        "YOProduction": 2020,
-        "price": "1"
+        "model": "Veyron",
+        "numberPlate": "",
+        "displacement": 8000,
+        "mileage": 15000,
+        "YOProduction": 2015,
+        "price": "2,200,000 EUR"
     },
     {
         "carid": 2,
-        "model": "Bugatti_2",
+        "model": "Chiron",
         "numberPlate": "EF456GH",
-        "displacement": 5950,
+        "displacement": 8000,
         "mileage": 18000,
-        "YOProduction": 2019
+        "YOProduction": 2019,
+        "price": "2,600,000 EUR"
     },
     {
         "carid": 3,
-        "model": "Bugatti_3",
+        "model": "Divo",
         "numberPlate": "IJ789KL",
-        "displacement": 3994,
+        "displacement": 8000,
         "mileage": 12000,
-        "YOProduction": 2021
+        "YOProduction": 2021,
+        "price": "5,000,000 EUR"
     },
     {
         "carid": 4,
-        "model": "Bugatti_4",
+        "model": "Chiron",
         "numberPlate": "MN012OP",
-        "displacement": 3982,
+        "displacement": 8000,
         "mileage": 30000,
-        "YOProduction": 2018
+        "YOProduction": 2018,
+        "price": "2,400,000 EUR"
     },
     {
         "carid": 5,
-        "model": "Bugatti_5",
+        "model": "Chiron",
         "numberPlate": "QR345ST",
-        "displacement": 3990,
+        "displacement": 8000,
         "mileage": 15000,
-        "YOProduction": 2022
+        "YOProduction": 2022,
+        "price": "3,200,000 EUR"
+    },
+    {
+        "carid": 6,
+        "model": "Veyron",
+        "numberPlate": "QR345ST",
+        "displacement": 8000,
+        "mileage": 15000,
+        "YOProduction": 2022,
+        "price": "2,250,000 EUR"
     }
 ]
+

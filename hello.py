@@ -2,14 +2,15 @@ from flask import Flask, render_template, request, redirect, jsonify
 import json
 import os
 
-# Flask App
+
 template_dir = os.path.abspath("./Templates")
 app = Flask(__name__, template_folder=template_dir)
 
-# Events DB File Path
+
 EVENTS_DB = "./db/auto.json"
 
-# Events Class
+
+
 class Event:
     def __init__(self, car_id, model, numberPlate, displacement, mileage, YOProduction, price):
         self.id = car_id
@@ -32,7 +33,7 @@ class Event:
         }
 
 
-# Utility Functions
+
 def load_events():
     """Load events from the JSON file."""
     if not os.path.exists(EVENTS_DB):
@@ -47,12 +48,15 @@ def save_events(events):
         json.dump(events, file, indent=4)
 
 
-# Routes
+
 @app.route("/", methods=["GET"])
 def index():
+    return render_template("homepage.html")
+
+@app.route("/bugatti")
+def bugatti(): 
     events = load_events()
     return render_template("bugatti.html", events=events)
-
 
 @app.route("/add_car", methods=["POST"])
 def add_car():
@@ -102,6 +106,6 @@ def delete_car(car_id):
     return jsonify({"message": "Car deleted successfully"}), 200
 
 
-# Run Flask App
+
 if __name__ == "__main__":
     app.run(debug=True)
