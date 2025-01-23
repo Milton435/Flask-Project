@@ -6,7 +6,7 @@ template_dir = os.path.abspath("./Templates")
 app = Flask(__name__, template_folder = template_dir)
 
 # Events DB
-EVENTS_DB = "./db/auto.json"
+CAR_DB = "./db/auto.json"
 
 # Events Class
 class Event:
@@ -39,7 +39,7 @@ class Event:
 #Root / Path for Index Page at URL http://127.0.0.0:5000/
 @app.route("/", methods=["GET"])
 def index():
-    with open(EVENTS_DB, "r") as file:
+    with open(CAR_DB, "r") as file:
         events = json.load(file)
     
     return render_template("homepage.html", events = events)
@@ -48,7 +48,7 @@ def index():
 @app.route("/add", methods=["GET", "POST"])
 def add_event():
     if request.method == 'POST':
-        with open(EVENTS_DB, "r") as file:
+        with open(CAR_DB, "r") as file:
             events = json.load(file)
             
         new_event = Event(
@@ -62,9 +62,9 @@ def add_event():
         
         events.append(new_event._dict_)
         
-        with open(EVENTS_DB, 'w') as file:
+        with open(CAR_DB, 'w') as file:
             json.dump(events, file, indent=4)
         
         return redirect('/')
         
-    return render_template("")
+    return render_template('bugatti.html')
