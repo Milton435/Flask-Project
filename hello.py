@@ -1,70 +1,107 @@
-from flask import Flask, render_template, request, redirect
-import json, os
+from flask import Flask, render_template, request, redirect, jsonify
+import json
+import os
 
 # Flask App
 template_dir = os.path.abspath("./Templates")
-app = Flask(__name__, template_folder = template_dir)
+app = Flask(__name__, template_folder=template_dir)
 
-# Events DB
-CAR_DB = "./db/auto.json"
+# Events DB File Path
+EVENTS_DB = "./db/auto.json"
 
 # Events Class
-class Car:
-    def _init_(self, car_id, model, numberPlate, displacement, mileage, YOProduction):
+class Event:
+    def __init__(self, car_id, model, numberPlate, displacement, mileage, YOProduction, price):
         self.id = car_id
         self.model = model
         self.numberPlate = numberPlate
         self.displacement = displacement
-        self.mileage=mileage
+        self.mileage = mileage
         self.YOProduction = YOProduction
-        
-    def getID(self):
-        return self.id
-    
-    def getmodello(self):
-        return self.model
-    
-    def getTarga(self):
-        return self.numberPlate
-    
-    def getcilindrata(self):
-        return self.displacement
-    
-    def getChilometraggio(self):
-        return self.mileage
-    
-    def getanno_produzione(self):
-        return self.YOProduction
-    
-#Root / Path for Index Page at URL http://127.0.0.0:5000/
+        self.price = price
+
+    def to_dict(self):
+        return {
+            "carid": self.id,
+            "model": self.model,
+            "numberPlate": self.numberPlate,
+            "displacement": self.displacement,
+            "mileage": self.mileage,
+            "YOProduction": self.YOProduction,
+            "price": self.price,
+        }
+
+
+# Utility Functions
+def load_events():
+    """Load events from the JSON file."""
+    if not os.path.exists(EVENTS_DB):
+        return []
+    with open(EVENTS_DB, "r") as file:
+        return json.load(file)
+
+
+def save_events(events):
+    """Save events to the JSON file."""
+    with open(EVENTS_DB, "w") as file:
+        json.dump(events, file, indent=4)
+
+
+# Routes
 @app.route("/", methods=["GET"])
 def index():
-    with open(CAR_DB, "r") as file:
-        cars = json.load(file)
-    
-    return render_template("homepage.html", cars = cars)
+    events = load_events()
+    return render_template("bugatti.html", events=events)
 
 
-@app.route("/add", methods=["GET", "POST"])
-def add_event():
-    if request.method == 'POST':
-        with open(CAR_DB, "r") as file:
-            cars = json.load(file)
-            
-        new_car = {
-            "id": request.form["carId"],
-            "model": request.form["model"],
-            "numberPlate": request.form["numberPlate"],
-            "displacement": request.form["displacement"],
-            "mileage": request.form["mileage"],
-            "YOProduction": request.form["YOProduction"],
-        }
-        
-        cars.append(new_car)
-        
-        with open(CAR_DB, 'w') as file:
-            json.dump(cars, file, indent=4)
-        
-        return redirect('/')
-        
-    return render_template('bugatti.html')
+@app.route("/add_car", methods=["POST"])
+def add_car():
+    events = load_events()
+    new_car_data = request.json
+
+    new_event = Event(
+        car_id=len(events) + 1,
+        model=new_car_data["model"],
+        numberPlate=new_car_data["numberPlate"],
+        displacement=new_car_data["displacement"],
+        mileage=new_car_data["mileage"],
+        YOProduction=new_car_data["YOProduction"],
+        price=new_car_data["price"],
+    )
+
+    events.append(new_event.to_dict())
+    save_events(events)
+    return jsonify({"message": "Car added successfully"}), 201
+
+
+@app.route("/edit_price", methods=["POST"])
+def edit_price():
+    events = load_events()
+    data = request.json
+    car_id = int(data["carid"])
+    new_price = data["price"]
+
+    for car in events:
+        if car["carid"] == car_id:
+            car["price"] = new_price
+            break
+
+    save_events(events)
+    return jsonify({"message": "Price updated successfully"}), 200
+
+
+@app.route("/delete_car/<int:car_id>", methods=["DELETE"])
+def delete_car(car_id):
+    events = load_events()
+    updated_events = [car for car in events if car["carid"] != car_id]
+
+    if len(events) == len(updated_events):
+        return jsonify({"message": "Car not found"}), 404
+
+    save_events(updated_events)
+    return jsonify({"message": "Car deleted successfully"}), 200
+
+
+# Run Flask App
+if __name__ == "__main__":
+    app.run(debug=True)

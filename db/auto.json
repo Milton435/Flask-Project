@@ -1,15 +1,16 @@
 [
     {
         "carid": 1,
-        "model": "Bugatti Chiron",
+        "model": "Bugatti_1",
         "numberPlate": "AB123CD",
         "displacement": 7993,
         "mileage": 25000,
-        "YOProduction": 2020
+        "YOProduction": 2020,
+        "price": "1"
     },
     {
         "carid": 2,
-        "model": "Lamborghini Aventador GT",
+        "model": "Bugatti_2",
         "numberPlate": "EF456GH",
         "displacement": 5950,
         "mileage": 18000,
@@ -17,7 +18,7 @@
     },
     {
         "carid": 3,
-        "model": "McLaren 720S",
+        "model": "Bugatti_3",
         "numberPlate": "IJ789KL",
         "displacement": 3994,
         "mileage": 12000,
@@ -25,7 +26,7 @@
     },
     {
         "carid": 4,
-        "model": "Mercedes-AMG GT",
+        "model": "Bugatti_4",
         "numberPlate": "MN012OP",
         "displacement": 3982,
         "mileage": 30000,
@@ -33,7 +34,7 @@
     },
     {
         "carid": 5,
-        "model": "Ferrari SF90 Stradale",
+        "model": "Bugatti_5",
         "numberPlate": "QR345ST",
         "displacement": 3990,
         "mileage": 15000,

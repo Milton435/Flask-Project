@@ -2,69 +2,390 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Car to JSON</title>
+    <title>Bugatti</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+         *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; 
         }
-        form {
-            max-width: 400px;
-            margin: auto;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+        #nav{
+            background-image: url('../static/img/bugatti/wallpaper.jpg');
+            background-repeat: no-repeat; 
+            background-size: 100%;
         }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
+        #title{
+            color: white;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: xx-large;
+            margin-left: 60px;
         }
-        input {
+        #subtitle
+        {
+            margin-top: 350px;
+            margin-left: 60px;
+            font-size: xx-large;
+            color: white;
+        }
+        #st{
+            font-size:medium;
+            margin-top: 50px;
+            height: 50px;
+        }
+        #pb{
+            margin-left: 60px;
+            font-size: xx-large;
+            font-style:normal;
+            margin-top: 60px;
+        }
+        #sub_pb{
+            margin-left: 60px;
+            columns: rgb(99, 99, 99);
+            font-size: large;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        #ft_left{
+            float: left;
+            display: inline;
+        }
+        #ft_l{
+            float: right;
+            color: white;
+            margin-top: 30px;
+        }
+        #ft_left img{
+            width: 80px;
+        }
+        footer{
+            background-color: black;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        #cars{
+           margin: 50px;
+           
+        }
+
+        .box{
+            width: 31.5%;
+            display: inline-block;
+            border: rgb(204, 204, 204) solid 1px;
+            margin: 10px;
+        
+        }
+
+        .slideshow-container {
+            position: relative;
             width: 100%;
-            padding: 8px;
+            height: 0;
+            padding-bottom: 56.25%;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .slideshow-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testo{
+            margin: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .model{
+            padding-top: 5px;
+        }
+        .address{
+            padding-top: 5px;
+            color: rgb(59, 59, 59);
+        }
+
+        hr{
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+
+        #story{
+            margin-left: 60px;
+            margin-right: 60px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        #story h1{
+            margin-bottom: 30px;
+        }
+        #story p{
+            color: rgb(65, 65, 65);
             margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #sub_story{
+            font-weight: bold;
+            font-size: large;
+        }
+        a{
+            color: black;
+            text-decoration: none; 
+            background-color: none;
         }
         button {
-            background-color: #4CAF50;
-            color: white;
             padding: 10px 15px;
+            font-size: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         button:hover {
-            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+        .editButton {
+            background-color: #0000FF;
+            color: white;
+        }
+        .editButton:hover {
+            background-color: #0000FF;
+        }
+        .deleteButton {
+            background-color: #FF0000;;
+            color: white;
+        }
+        .deleteButton:hover {
+            background-color: #FF0000;
+        }
+
+        #addButton {
+            display: inline-block;
+            margin: 10px 60px;
+            background-color: #28A745;
+            color: white;
+            font-size: 10px;
+            padding: 15px 15px;
+        }
+        #addButton:hover {
+            background-color: #218838;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: white;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .modal.active, .modal-overlay.active {
+            display: block;
+        }
+        #addCarForm {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        #addCarForm input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #addCarForm input:focus {
+            border-color: #0d00ff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+        #addCarForm button {
+            padding: 12px;
+            font-size: 1rem;
+            background-color: #0d00ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #addCarForm button:hover {
+            background-color: #0d00ff;
         }
     </style>
 </head>
+
 <body>
-    <h1>Register a Car</h1>
-    <form id="carForm" action="/add" method="post">
-        <label for="carId">Car ID:</label>
-        <input type="text" id="carId" name="carId" required>
+    <div id="nav">
+        <h1 id="title" style="color: transparent;">_</h1> 
+        <div id="subtitle">
+            <h1>Bugatti</h1>
+            <p id="st"> “if it is comparable, it is no longer Bugatti.”</p>
+        </div>
+    </div>
+    <h1 id="pb">Bugatti for sale</h1>
+    <p id="sub_pb">{{ events | length }} listings</p>
 
-        <label for="model">Model:</label>
-        <input type="text" id="model" name="model" required>
+    <button id="addButton">Add Car</button>
 
-        <label for="numberPlate">Number Plate:</label>
-        <input type="text" id="numberPlate" name="numberPlate" required>
 
-        <label for="displacement">Displacement (cc):</label>
-        <input type="number" id="displacement" name="displacement" required>
+    <div id="cars">
+        {% for car in events %}
+        <div class="box">
+            <a href="#">
+                <div class="slideshow-container">
+                    <div class="mySlides">
+                        <img src="../static/img/bugatti/{{car.model | replace(' ', '_')}}.jpg" alt="{{ car.model }}">
+                    </div>
+                </div>
+                <div class="testo">
+                    <h4 style="text-align: center;">{{ car.model }}</h4>
+                    <p><strong>Number Plate:</strong> {{ car.numberPlate }}</p>
+                    <p><strong>Displacement:</strong> {{ car.displacement }} cc</p>
+                    <p><strong>Mileage:</strong> {{ car.mileage }} km</p>
+                    <p><strong>Year of Production:</strong> {{ car.YOProduction }}</p>
+                </div>
+                <div>
+                    <button class="editButton" data-id="{{ car.carid }}" data-price="{{ car.price }}">Edit Price</button>
+                    <button class="deleteButton" data-id="{{ car.carid }}">Delete</button>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        
+    </div>
 
-        <label for="mileage">Mileage (km):</label>
-        <input type="number" id="mileage" name="mileage" required>
+    <div id="addModal" class="modal">
+        <h2 style="margin-bottom: 20px; text-align: center;">Add New Car</h2>
+        <form id="addCarForm">
+            <input type="text" name="model" placeholder="Model" required>
+            <input type="text" name="numberPlate" placeholder="Number Plate" required>
+            <input type="number" name="displacement" placeholder="Displacement (cc)" required>
+            <input type="number" name="mileage" placeholder="Mileage (km)" required>
+            <input type="number" name="YOProduction" placeholder="Year of Production" required>
+            <input type="number" name="price" placeholder="Price" required>
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit">Add Car</button>
+                <button type="button" onclick="closeModal('addModal')">Cancel</button>
+            </div>
+        </form>
+    </div>
 
-        <label for="YOProduction">Year of Production:</label>
-        <input type="number" id="YOProduction" name="YOProduction" required>
+   
+    <div id="editModal" class="modal">
+        <h2>Edit Price</h2>
+        <form id="editPriceForm">
+            <input type="hidden" name="carid" id="editCarId">
+            <input type="number" name="price" id="editPriceInput" placeholder="New Price" required><br>
+            <button type="submit">Update Price</button>
+            <button type="button" onclick="closeModal('editModal')">Cancel</button>
+        </form>
+    </div>
 
-        <button type="submit">Register Car</button>
-    </form>
+   
+    <div id="modalOverlay" class="modal-overlay"></div>
+    
+    <footer>
+        <div id="ft_left">
+            <img src="../static/img/je.png">
+            <div id="ft_l">
+                <p>&copy; 2023 JattEdition. All rights reserved.</p>
+            </div>
+        </div>
+        <div class="ft_right">
+            
+        </div>
+        <div style="clear:both;"></div>
+    </footer>
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Add Button Logic
+        document.getElementById('addButton').addEventListener('click', () => {
+            showModal('addModal');
+        });
+
+        // Add Car Form Submission
+        document.getElementById('addCarForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            const response = await fetch('/add_car', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            if (response.ok) location.reload();
+        });
+
+        // Edit Button Logic
+        document.querySelectorAll('.editButton').forEach(button => {
+            button.addEventListener('click', () => {
+                const carId = button.getAttribute('data-id');
+                const price = button.getAttribute('data-price');
+                document.getElementById('editCarId').value = carId;
+                document.getElementById('editPriceInput').value = price;
+                showModal('editModal');
+            });
+        });
+
+        // Edit Price Form Submission
+        document.getElementById('editPriceForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            const response = await fetch('/edit_price', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            if (response.ok) location.reload();
+        });
+
+        // Delete Button Logic
+        document.querySelectorAll('.deleteButton').forEach(button => {
+            button.addEventListener('click', async () => {
+                const carId = button.getAttribute('data-id');
+                const response = await fetch(`/delete_car/${carId}`, { method: 'DELETE' });
+                if (response.ok) location.reload();
+            });
+        });
+    </script>
 </body>
 </html>
+
+
